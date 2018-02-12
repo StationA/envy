@@ -35,8 +35,20 @@ class Env(object):
             if isinstance(value_spec, type) and issubclass(value_spec, Env):
                 value = value_spec(envvar, self._env)
             elif isinstance(value_spec, list):
-                # TODO: Implement list support!
-                raise NotImplementedError('List attribute support is not yet implemented')
+                value_type = type(value_spec[0])
+                idx = 0
+                new_values = []
+                while True:
+                    listvar = envvar + DELIMITER + str(idx)
+                    if listvar in self._env:
+                        new_values.append(value_type(self._env[listvar]))
+                        idx += 1
+                    else:
+                        break
+                if new_values:
+                    value = new_values
+                else:
+                    value = value_spec
             else:
                 value_type = type(value_spec)
                 if envvar in self._env:

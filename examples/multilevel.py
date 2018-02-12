@@ -15,7 +15,7 @@ from envy import Env
 
 class DBEnv(Env):
     connection_string = 'postgresql://un:pw@host:port/db'
-    connection_timeout = 10
+    connection_timeout = [10, 20]
 
 
 class AppEnv(Env):
