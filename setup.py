@@ -16,7 +16,7 @@ setup(
     version='0.1.0',
     description='Environment-based configurations that you will envy',
     author='Station A',
-    author_email='tech@stationa.com',
+    author_email='software@stationa.com',
     url='https://github.com/StationA/envy',
     packages=find_packages(exclude=['*tests*']),
     zip_safe=False,
